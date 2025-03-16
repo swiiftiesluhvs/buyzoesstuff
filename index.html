@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Shop</title>
+    <title>BuyZoesStuff</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,6 +18,18 @@
         }
         h1 {
             color: #ff66b2;
+        }
+        .shop-title {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ff66b2;
+            margin-bottom: 5px;
+        }
+        .shop-description {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
         }
         .categories {
             display: flex;
@@ -58,16 +70,12 @@
         }
         .reserve-btn { background: #ff66b2; color: white; }
         .bid-btn { background: #ffccff; color: black; }
-        .admin-panel { display: none; margin-top: 30px; }
-        .swatches { margin-top: 30px; }
-        .swatch { display: inline-block; width: 50px; height: 50px; border-radius: 50%; margin: 5px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to My Store</h1>
-        <input type="text" id="user-name" placeholder="Enter your name" />
-        <button onclick="saveUserName()">Submit</button>
+        <div class="shop-title">BuyZoesStuff</div>
+        <div class="shop-description" contenteditable="true">Welcome to my shop! Browse and reserve your favorite products.</div>
         
         <div class="categories">
             <div class="category" onclick="showCategory('haircare')">Haircare</div>
@@ -76,35 +84,9 @@
         </div>
         
         <div id="product-list" class="products"></div>
-
-        <div class="admin-panel" id="admin-panel">
-            <h2>Admin Panel</h2>
-            <p>Reserved & Bids will appear here.</p>
-            <ul id="admin-list"></ul>
-        </div>
-
-        <div class="swatches">
-            <h2>Swatches</h2>
-            <div class="swatch" style="background: #ff6666;" title="Red"></div>
-            <div class="swatch" style="background: #ffcc66;" title="Peach"></div>
-            <div class="swatch" style="background: #cc99ff;" title="Purple"></div>
-        </div>
     </div>
     
     <script>
-        let userName = localStorage.getItem("userName") || "";
-        document.getElementById("user-name").value = userName;
-
-        function saveUserName() {
-            userName = document.getElementById("user-name").value;
-            if (!userName) {
-                alert("Please enter your name.");
-                return;
-            }
-            localStorage.setItem("userName", userName);
-            alert("Name saved!");
-        }
-
         const products = {
             haircare: [
                 { name: "Shampoo", image: "shampoo.jpg", price: "$15", type: "reserve" },
@@ -136,26 +118,14 @@
         }
 
         function reserve(itemName) {
-            if (!userName) {
-                alert("Please enter your name first.");
-                return;
-            }
-            alert(`Thanks, ${userName}! ${itemName} has been reserved for you.`);
-            document.getElementById("admin-list").innerHTML += `<li>${userName} reserved ${itemName}</li>`;
+            const userName = prompt("Enter your name to reserve " + itemName);
+            if (userName) alert("Thanks, " + userName + "! " + itemName + " has been reserved for you.");
         }
         
         function bid(itemName) {
-            if (!userName) {
-                alert("Please enter your name first.");
-                return;
-            }
-            const bidAmount = prompt(`Enter your bid amount for ${itemName}`);
-            if (bidAmount) {
-                alert(`Your bid of $${bidAmount} for ${itemName} has been placed!`);
-                document.getElementById("admin-list").innerHTML += `<li>${userName} bid $${bidAmount} on ${itemName}</li>`;
-            }
+            const bidAmount = prompt("Enter your bid amount for " + itemName);
+            if (bidAmount) alert("Your bid of $" + bidAmount + " for " + itemName + " has been placed!");
         }
     </script>
 </body>
 </html>
-
