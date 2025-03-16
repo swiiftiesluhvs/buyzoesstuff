@@ -1,134 +1,161 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+        h1 {
+            color: #ff66b2;
+        }
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+        .category {
+            background: #ff99cc;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        .product img {
+            max-width: 100px;
+            border-radius: 5px;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .reserve-btn { background: #ff66b2; color: white; }
+        .bid-btn { background: #ffccff; color: black; }
+        .admin-panel { display: none; margin-top: 30px; }
+        .swatches { margin-top: 30px; }
+        .swatch { display: inline-block; width: 50px; height: 50px; border-radius: 50%; margin: 5px; }
+    </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;My Shop&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: Arial, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #ffe6f2;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 900px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: auto;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>h1 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #ff66b2;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.categories {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-around;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 30px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.category {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #ff99cc;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.products {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(3, 1fr);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.product {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 5px 10px rgba(0,0,0,0.1);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.product img {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 100px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.btn {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 8px 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.reserve-btn { background: #ff66b2; color: white; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.bid-btn { background: #ffccff; color: black; }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;Welcome to My Store&lt;/h1&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="categories"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="category" onclick="showCategory('haircare')"&gt;Haircare&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="category" onclick="showCategory('makeup')"&gt;Makeup&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="category" onclick="showCategory('skincare')"&gt;Skincare&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="product-list" class="products"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const products = {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>haircare: [</p>
-<p class="p1"><span class="Apple-converted-space">                </span>{ name: "Shampoo", image: "shampoo.jpg", price: "$15", type: "reserve" },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>{ name: "Hair Oil", image: "hairoil.jpg", price: "$25", type: "bid" }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>],</p>
-<p class="p1"><span class="Apple-converted-space">            </span>makeup: [</p>
-<p class="p1"><span class="Apple-converted-space">                </span>{ name: "Lipstick", image: "lipstick.jpg", price: "$10", type: "reserve" },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>{ name: "Foundation", image: "foundation.jpg", price: "$30", type: "bid" }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>],</p>
-<p class="p1"><span class="Apple-converted-space">            </span>skincare: [</p>
-<p class="p1"><span class="Apple-converted-space">                </span>{ name: "Moisturizer", image: "moisturizer.jpg", price: "$20", type: "reserve" },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>{ name: "Face Serum", image: "serum.jpg", price: "$35", type: "bid" }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>]</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function showCategory(category) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const productList = document.getElementById("product-list");</p>
-<p class="p1"><span class="Apple-converted-space">            </span>productList.innerHTML = "";</p>
-<p class="p1"><span class="Apple-converted-space">            </span>products[category].forEach(product =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>productList.innerHTML += `</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="product"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="${product.image}" alt="${product.name}"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;${product.name}&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;Price: ${product.price}&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>${product.type === "reserve" ? `&lt;button class='btn reserve-btn' onclick='reserve("${product.name}")'&gt;Reserve&lt;/button&gt;` : `&lt;button class='btn bid-btn' onclick='bid("${product.name}")'&gt;Bid&lt;/button&gt;`}</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function reserve(itemName) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const userName = prompt("Enter your name to reserve " + itemName);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (userName) alert("Thanks, " + userName + "! " + itemName + " has been reserved for you.");</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function bid(itemName) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const bidAmount = prompt("Enter your bid amount for " + itemName);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (bidAmount) alert("Your bid of $" + bidAmount + " for " + itemName + " has been placed!");</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+    <div class="container">
+        <h1>Welcome to My Store</h1>
+        <input type="text" id="user-name" placeholder="Enter your name" />
+        <button onclick="saveUserName()">Submit</button>
+        
+        <div class="categories">
+            <div class="category" onclick="showCategory('haircare')">Haircare</div>
+            <div class="category" onclick="showCategory('makeup')">Makeup</div>
+            <div class="category" onclick="showCategory('skincare')">Skincare</div>
+        </div>
+        
+        <div id="product-list" class="products"></div>
+
+        <div class="admin-panel" id="admin-panel">
+            <h2>Admin Panel</h2>
+            <p>Reserved & Bids will appear here.</p>
+            <ul id="admin-list"></ul>
+        </div>
+
+        <div class="swatches">
+            <h2>Swatches</h2>
+            <div class="swatch" style="background: #ff6666;" title="Red"></div>
+            <div class="swatch" style="background: #ffcc66;" title="Peach"></div>
+            <div class="swatch" style="background: #cc99ff;" title="Purple"></div>
+        </div>
+    </div>
+    
+    <script>
+        let userName = localStorage.getItem("userName") || "";
+        document.getElementById("user-name").value = userName;
+
+        function saveUserName() {
+            userName = document.getElementById("user-name").value;
+            if (!userName) {
+                alert("Please enter your name.");
+                return;
+            }
+            localStorage.setItem("userName", userName);
+            alert("Name saved!");
+        }
+
+        const products = {
+            haircare: [
+                { name: "Shampoo", image: "shampoo.jpg", price: "$15", type: "reserve" },
+                { name: "Hair Oil", image: "hairoil.jpg", price: "$25", type: "bid" }
+            ],
+            makeup: [
+                { name: "Lipstick", image: "lipstick.jpg", price: "$10", type: "reserve" },
+                { name: "Foundation", image: "foundation.jpg", price: "$30", type: "bid" }
+            ],
+            skincare: [
+                { name: "Moisturizer", image: "moisturizer.jpg", price: "$20", type: "reserve" },
+                { name: "Face Serum", image: "serum.jpg", price: "$35", type: "bid" }
+            ]
+        };
+
+        function showCategory(category) {
+            const productList = document.getElementById("product-list");
+            productList.innerHTML = "";
+            products[category].forEach(product => {
+                productList.innerHTML += `
+                    <div class="product">
+                        <img src="${product.image}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p>Price: ${product.price}</p>
+                        ${product.type === "reserve" ? `<button class='btn reserve-btn' onclick='reserve("${product.name}")'>Reserve</button>` : `<button class='btn bid-btn' onclick='bid("${product.name}")'>Bid</button>`}
+                    </div>
+                `;
+            });
+        }
+
+        function reserve(itemName) {
+            if (!userName) {
+                alert("Please enter your name first.");
+                return;
+            }
+            alert(`Thanks, ${userName}! ${itemName} has been reserved for you.`);
+            document.getElementById("admin-list").innerHTML += `<li>${userName} reserved ${itemName}</li>`;
+        }
+        
+        function bid(itemName) {
+            if (!userName) {
+                alert("Please enter your name first.");
+                return;
+            }
+            const bidAmount = prompt(`Enter your bid amount for ${itemName}`);
+            if (bidAmount) {
+                alert(`Your bid of $${bidAmount} for ${itemName} has been placed!`);
+                document.getElementById("admin-list").innerHTML += `<li>${userName} bid $${bidAmount} on ${itemName}</li>`;
+            }
+        }
+    </script>
 </body>
 </html>
+
