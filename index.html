@@ -86,21 +86,26 @@
         <div id="product-list" class="products"></div>
     </div>
     
-    <<script>
-    let products = JSON.parse(localStorage.getItem("products")) || {
-        haircare: [
-            { name: "Shampoo", image: "shampoo.jpg", price: "$15", retailPrice: "$20", type: "reserve" },
-            { name: "Hair Oil", image: "hairoil.jpg", price: "$25", retailPrice: "$35", type: "bid" }
-        ],
-        makeup: [
-            { name: "Lipstick", image: "lipstick.jpg", price: "$10", retailPrice: "$18", type: "reserve" },
-            { name: "Foundation", image: "foundation.jpg", price: "$30", retailPrice: "$45", type: "bid" }
-        ],
-        skincare: [
-            { name: "Moisturizer", image: "moisturizer.jpg", price: "$20", retailPrice: "$30", type: "reserve" },
-            { name: "Face Serum", image: "serum.jpg", price: "$35", retailPrice: "$50", type: "bid" }
-        ]
-    };
+<script>
+    function showCategory(category) {
+        const productList = document.getElementById("product-list");
+        productList.innerHTML = "";
+        products[category].forEach(product => {
+            productList.innerHTML += `
+                <div class="product">
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>Retail Price: ${product.retailPrice}</p>
+                    <p>Our Price: ${product.price}</p>
+                    ${product.type === "reserve" 
+                        ? `<button class='btn reserve-btn' onclick='reserve("${product.name}")'>Reserve</button>` 
+                        : `<button class='btn bid-btn' onclick='bid("${product.name}")'>Bid</button>`}
+                </div>
+            `;
+        });
+    }
+</script>
+
 
     function showCategory(category) {
         const productList = document.getElementById("product-list");
