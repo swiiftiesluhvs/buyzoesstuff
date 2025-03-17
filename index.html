@@ -7,23 +7,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>BuyZoesStuff</h1>
-        <p class="shop-description">Welcome to my shop! Browse and reserve your favorite products.</p>
-        <nav>
-            <a href="login.html">Login</a> | 
-            <a href="signup.html">Sign Up</a> | 
-            <a href="admin.html">Admin Panel</a>
-        </nav>
-    </header>
+    <h1>BuyZoesStuff</h1>
+    <p class="shop-description">Welcome to my shop! Browse and reserve your favorite products.</p>
 
     <div class="categories">
-        <button onclick="showCategory('haircare')">Haircare</button>
-        <button onclick="showCategory('makeup')">Makeup</button>
-        <button onclick="showCategory('skincare')">Skincare</button>
+        <select id="categorySelect" onchange="showCategory(this.value)">
+            <option value="">Select Category</option>
+            <option value="haircare">Haircare</option>
+            <option value="makeup">Makeup</option>
+            <option value="skincare">Skincare</option>
+        </select>
     </div>
 
     <div id="product-list" class="products"></div>
+
+    <button onclick="viewCart()">View Cart</button>
+
+    <a href="admin.html">Admin Login</a>
 
     <script src="script.js"></script>
 </body>
