@@ -7,31 +7,32 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Admin Panel</h1>
-    <label>Password: <input type="Password!" id="adminPass"></label>
-    <button onclick="adminLogin()">Login</button>
-
-    <div id="admin-controls" style="display:none;">
-        <h2>Add New Product</h2>
-        <input type="text" id="productName" placeholder="Product Name">
-        <input type="text" id="productPrice" placeholder="Price">
-        <textarea id="productDescription" placeholder="Description"></textarea>
-        <select id="productCategory">
+    <div class="container">
+        <h1>Admin Panel</h1>
+        <button onclick="logoutAdmin()">Logout</button>
+        <button onclick="goToShop()">Back to Shop</button>
+        
+        <h2>Add a Product</h2>
+        <input type="text" id="product-name" placeholder="Product Name">
+        <input type="number" id="product-price" placeholder="Price">
+        <input type="file" id="product-image">
+        <textarea id="product-description" placeholder="Product Description"></textarea>
+        <select id="product-category">
             <option value="haircare">Haircare</option>
             <option value="makeup">Makeup</option>
             <option value="skincare">Skincare</option>
+            <option value="bodycare">Body Care</option>
         </select>
-        <select id="productType">
+        <select id="product-type">
             <option value="reserve">Reserve</option>
             <option value="bid">Bid</option>
         </select>
-        <input type="file" id="productImage">
         <button onclick="addProduct()">Add Product</button>
-
+        
         <h2>Manage Products</h2>
-        <div id="adminProductList"></div>
+        <div id="admin-product-list"></div>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
