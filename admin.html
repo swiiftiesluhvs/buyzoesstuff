@@ -8,22 +8,30 @@
 </head>
 <body>
     <h1>Admin Panel</h1>
-    <div id="admin-section">
-        <h2>Add Product</h2>
-        <input type="text" id="product-name" placeholder="Product Name">
-        <input type="text" id="product-price" placeholder="Price">
-        <select id="product-category">
+    <label>Password: <input type="#MaterialDucc14!" id="adminPass"></label>
+    <button onclick="adminLogin()">Login</button>
+
+    <div id="admin-controls" style="display:none;">
+        <h2>Add New Product</h2>
+        <input type="text" id="productName" placeholder="Product Name">
+        <input type="text" id="productPrice" placeholder="Price">
+        <textarea id="productDescription" placeholder="Description"></textarea>
+        <select id="productCategory">
             <option value="haircare">Haircare</option>
             <option value="makeup">Makeup</option>
             <option value="skincare">Skincare</option>
         </select>
+        <select id="productType">
+            <option value="reserve">Reserve</option>
+            <option value="bid">Bid</option>
+        </select>
+        <input type="file" id="productImage">
         <button onclick="addProduct()">Add Product</button>
 
         <h2>Manage Products</h2>
-        <div id="admin-product-list"></div>
+        <div id="adminProductList"></div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
