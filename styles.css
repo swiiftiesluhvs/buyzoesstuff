@@ -1,21 +1,31 @@
 body {
-    font-family: "Comic Sans MS", cursive;
+    font-family: Arial, sans-serif;
     background-color: #ffe6f2;
     text-align: center;
-    color: #ff66b2;
-}
-
-h1 {
-    color: #ff1493;
 }
 
 button {
-    background: #ff99cc;
-    border: none;
     padding: 10px;
-    margin: 5px;
-    cursor: pointer;
-    border-radius: 10px;
-    font-size: 16px;
+    background-color: #ff66b2;
     color: white;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.product {
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.product img {
+    max-width: 100px;
+    border-radius: 5px;
 }
