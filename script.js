@@ -1,15 +1,17 @@
-const products = [];
+let products = [];
+let cart = [];
+let isAdmin = false;
 
 function showCategory(category) {
-    const productList = document.getElementById("product-list");
+    let productList = document.getElementById("product-list");
     productList.innerHTML = "";
     products.filter(p => p.category === category).forEach(product => {
         productList.innerHTML += `
-            <div class="product">
+            <div>
                 <img src="${product.image}" alt="${product.name}">
                 <h3>${product.name}</h3>
                 <p>Price: $${product.price}</p>
-                <button onclick='${product.type === "reserve" ? `reserve("${product.name}")` : `bid("${product.name}")`}'>${product.type === "reserve" ? "Reserve" : "Bid"}</button>
+                <button onclick="reserve('${product.name}')">Reserve</button>
             </div>
         `;
     });
@@ -18,13 +20,14 @@ function showCategory(category) {
 function addProduct() {
     const name = document.getElementById("product-name").value;
     const price = document.getElementById("product-price").value;
-    const image = document.getElementById("product-image").files[0]?.name;
     const description = document.getElementById("product-description").value;
+    const imageFile = document.getElementById("product-image").files[0];
     const category = document.getElementById("product-category").value;
     const type = document.getElementById("product-type").value;
     
-    if (name && price && image) {
-        products.push({ name, price, image, description, category, type });
+    if (name && price && imageFile) {
+        const imageURL = URL.createObjectURL(imageFile);
+        products.push({ name, price, description, image: imageURL, category, type });
         alert("Product added!");
     } else {
         alert("Please fill all fields.");
@@ -32,26 +35,24 @@ function addProduct() {
 }
 
 function reserve(itemName) {
+    cart.push(itemName);
     alert("Reserved: " + itemName);
 }
 
-function bid(itemName) {
-    alert("Bid placed for: " + itemName);
-}
-
 function openCart() {
-    alert("Cart functionality coming soon!");
+    alert("Cart: " + cart.join(", "));
 }
 
 function openLogin() {
-    alert("Login functionality coming soon!");
+    let password = prompt("Enter admin password:");
+    if (password === "admin123") {
+        isAdmin = true;
+        window.location.href = "admin.html";
+    } else {
+        alert("Wrong password!");
+    }
 }
 
 function goToShop() {
-    window.location.href = "index.html";
-}
-
-function logoutAdmin() {
-    alert("Logging out...");
     window.location.href = "index.html";
 }
