@@ -1,67 +1,57 @@
-let products = [];
+const products = [];
 
-async function fetchProducts() {
-    const response = await fetch('products.json');
-    products = await response.json();
-}
-
-async function showCategory(category) {
-    if (!products.length) await fetchProducts();
-
+function showCategory(category) {
     const productList = document.getElementById("product-list");
     productList.innerHTML = "";
+    products.filter(p => p.category === category).forEach(product => {
+        productList.innerHTML += `
+            <div class="product">
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <p>Price: $${product.price}</p>
+                <button onclick='${product.type === "reserve" ? `reserve("${product.name}")` : `bid("${product.name}")`}'>${product.type === "reserve" ? "Reserve" : "Bid"}</button>
+            </div>
+        `;
+    });
+}
+
+function addProduct() {
+    const name = document.getElementById("product-name").value;
+    const price = document.getElementById("product-price").value;
+    const image = document.getElementById("product-image").files[0]?.name;
+    const description = document.getElementById("product-description").value;
+    const category = document.getElementById("product-category").value;
+    const type = document.getElementById("product-type").value;
     
-    products
-        .filter(p => p.category === category)
-        .forEach(product => {
-            productList.innerHTML += `
-                <div class="product">
-                    <img src="uploads/${product.image}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                    <p>${product.description}</p>
-                    <p>Price: $${product.price}</p>
-                    ${product.type === "reserve"
-                        ? `<button onclick='reserve("${product.name}")'>Reserve</button>`
-                        : `<button onclick='bid("${product.name}")'>Bid</button>`}
-                </div>
-            `;
-        });
+    if (name && price && image) {
+        products.push({ name, price, image, description, category, type });
+        alert("Product added!");
+    } else {
+        alert("Please fill all fields.");
+    }
 }
 
 function reserve(itemName) {
-    alert(`${itemName} has been added to your cart!`);
+    alert("Reserved: " + itemName);
 }
 
 function bid(itemName) {
-    let bidAmount = prompt(`Enter your bid for ${itemName}`);
-    if (bidAmount) alert(`Your bid of $${bidAmount} has been placed!`);
+    alert("Bid placed for: " + itemName);
 }
 
-// Admin Login
-function adminLogin() {
-    const password = document.getElementById("adminPass").value;
-    if (password === "admin123") {
-        document.getElementById("admin-controls").style.display = "block";
-    } else {
-        alert("Wrong password!");
-    }
+function openCart() {
+    alert("Cart functionality coming soon!");
 }
 
-// Add Product (For Admin)
-function addProduct() {
-    const name = document.getElementById("productName").value;
-    const price = document.getElementById("productPrice").value;
-    const description = document.getElementById("productDescription").value;
-    const category = document.getElementById("productCategory").value;
-    const type = document.getElementById("productType").value;
-    const imageFile = document.getElementById("productImage").files[0];
-
-    if (name && price && description && imageFile) {
-        const newProduct = { name, price, description, category, type, image: imageFile.name };
-        products.push(newProduct);
-        alert("Product added!");
-    } else {
-        alert("Please fill in all fields.");
-    }
+function openLogin() {
+    alert("Login functionality coming soon!");
 }
 
+function goToShop() {
+    window.location.href = "index.html";
+}
+
+function logoutAdmin() {
+    alert("Logging out...");
+    window.location.href = "index.html";
+}
