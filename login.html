@@ -3,61 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - BuyZoesStuff</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffe6f2;
-            text-align: center;
-            padding: 50px;
-        }
-        .login-container {
-            background: white;
-            padding: 20px;
-            max-width: 300px;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        }
-        input {
-            width: 90%;
-            padding: 8px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .btn {
-            background: #ff66b2;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-    </style>
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <input type="email" id="email" placeholder="Enter email"><br>
-        <input type="password" id="password" placeholder="Enter password"><br>
-        <button class="btn" onclick="login()">Login</button>
-    </div>
+    <h1>Login</h1>
+    <input type="email" id="login-email" placeholder="Email">
+    <input type="password" id="login-password" placeholder="Password">
+    <button onclick="login()">Login</button>
 
-    <script>
-        function login() {
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const user = JSON.parse(localStorage.getItem("user"));
-
-            if (user && email === user.email && password === user.password) {
-                alert("Login successful! Welcome, " + user.name);
-                window.location.href = "index.html";
-            } else {
-                alert("Incorrect email or password.");
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
