@@ -1,66 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BuyZoesStuff - Admin Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffe6f2;
-            text-align: center;
-            padding: 50px;
-        }
-        .login-container {
-            background: white;
-            padding: 20px;
-            max-width: 300px;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        }
-        input {
-            width: 90%;
-            padding: 8px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .btn {
-            background: #ff66b2;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
-    <div class="login-container">
-        <h2>Admin Login</h2>
-        <input type="text" id="adminEmail" placeholder="Enter email"><br>
-        <input type="password" id="adminPassword" placeholder="Enter password"><br>
-        <button class="btn" onclick="login()">Login</button>
-    </div>
+<script>
+    let products = JSON.parse(localStorage.getItem("products")) || {
+        haircare: [],
+        makeup: [],
+        skincare: []
+    };
 
-    <script>
-        function login() {
-            const email = document.getElementById("adminEmail").value;
-            const password = document.getElementById("adminPassword").value;
-            
-            // 🔒 Change this to your own admin email and password
-            const adminEmail = "auyeungz202814@gmail.com";
-            const adminPassword = "#MaterialDucc14!";
-            
-            if (email === adminEmail && password === adminPassword) {
-                alert("Login successful!");
-                window.location.href = "admin-dashboard.html";
-            } else {
-                alert("Incorrect login credentials.");
-            }
+    function addProduct() {
+        const category = prompt("Enter category (haircare, makeup, skincare):").toLowerCase();
+        const name = prompt("Enter product name:");
+        const retailPrice = prompt("Enter retail price:");
+        const price = prompt("Enter your price:");
+        const image = prompt("Enter image URL:");
+        const type = confirm("Is this a bid product? OK = Yes, Cancel = No") ? "bid" : "reserve";
+
+        if (category in products && name && price && image) {
+            products[category].push({ name, retailPrice, price, image, type });
+            localStorage.setItem("products", JSON.stringify(products));
+            alert("Product added successfully!");
+        } else {
+            alert("Invalid input. Try again.");
         }
-    </script>
-</body>
-</html>
+    }
+
+    function editProduct() {
+        const category = prompt("Enter category (haircare, makeup, skincare):").toLowerCase();
+        const name = prompt("Enter the product name you want to edit:");
+
+        let product = products[category]?.find(p => p.name === name);
+        if (product) {
+            product.name = prompt("New product name:", product.name);
+            product.retailPrice = prompt("New retail price:", product.retailPrice);
+            product.price = prompt("New price:", product.price);
+            product.image = prompt("New image URL:", product.image);
+            localStorage.setItem("products", JSON.stringify(products));
+            alert("Product updated!");
+        } else {
+            alert("Product not found.");
+        }
+    }
+
+    function deleteProduct() {
+        const category = prompt("Enter category (haircare, makeup, skincare):").toLowerCase();
+        const name = prompt("Enter the product name to delete:");
+
+        products[category] = products[category]?.filter(p => p.name !== name);
+        localStorage.setItem("products", JSON.stringify(products));
+        alert("Product deleted.");
+    }
+
+    function viewReservations() {
+        let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+        if (reservations.length === 0) {
+            alert("No reservations yet.");
+        } else {
+            let message = "Reservations:\n";
+            reservations.forEach(r => message += `${r.user} reserved ${r.item}\n`);
+            alert(message);
+        }
+    }
+
+    function manageBids() {
+        let bids = JSON.parse(localStorage.getItem("bids")) || [];
+        if (bids.length === 0) {
+            alert("No bids yet.");
+        } else {
+            let message = "Bids:\n";
+            bids.forEach(b => message += `${b.user} bid $${b.amount} on ${b.item}\n`);
+            alert(message);
+        }
+    }
+</script>
