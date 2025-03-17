@@ -1,26 +1,18 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffe6f2;
-    margin: 0;
-    padding: 20px;
     text-align: center;
+    background-color: #ffe6f2;
 }
-.container {
-    max-width: 900px;
-    margin: auto;
-}
-h1 {
-    color: #ff66b2;
-}
-.product img {
-    max-width: 100px;
-    border-radius: 5px;
-}
-.cart-button, .login-button {
-    margin: 10px;
+
+button {
     padding: 10px;
-    background: #ff99cc;
+    margin: 10px;
+    background-color: #ff99cc;
     color: white;
     border: none;
     cursor: pointer;
+}
+
+#product-list img {
+    max-width: 100px;
 }
