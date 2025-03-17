@@ -4,35 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Admin Panel</h1>
-        <button onclick="logoutAdmin()">Logout</button>
-        <button onclick="goToShop()">Back to Shop</button>
-        
-        <h2>Add a Product</h2>
-        <input type="text" id="product-name" placeholder="Product Name">
-        <input type="number" id="product-price" placeholder="Price">
-        <input type="file" id="product-image">
-        <textarea id="product-description" placeholder="Product Description"></textarea>
-        <select id="product-category">
-            <option value="haircare">Haircare</option>
-            <option value="makeup">Makeup</option>
-            <option value="skincare">Skincare</option>
-            <option value="bodycare">Body Care</option>
-        </select>
-        <select id="product-type">
-            <option value="reserve">Reserve</option>
-            <option value="bid">Bid</option>
-        </select>
-        <button onclick="addProduct()">Add Product</button>
-        
-        <h2>Manage Products</h2>
-        <div id="admin-product-list"></div>
-    </div>
+    <h1>Manage Products</h1>
+    <button onclick="goToShop()">Back to Shop</button>
     
+    <input type="text" id="product-name" placeholder="Product Name">
+    <input type="text" id="product-price" placeholder="Price">
+    <input type="text" id="product-description" placeholder="Description">
+    <input type="file" id="product-image">
+    <select id="product-category">
+        <option value="electronics">Electronics</option>
+        <option value="fashion">Fashion</option>
+    </select>
+    <select id="product-type">
+        <option value="reserve">Reserve</option>
+        <option value="bid">Bid</option>
+    </select>
+    <button onclick="addProduct()">Add Product</button>
+    
+    <div id="product-list"></div>
     <script src="script.js"></script>
 </body>
 </html>
