@@ -1,18 +1,26 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #ffe6f2;
+    font-family: 'Arial', sans-serif;
+    background: #ffe6f2;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
-
+h1, h2, h3 {
+    color: #ff66b2;
+}
 button {
-    padding: 10px;
-    margin: 10px;
-    background-color: #ff99cc;
+    background: #ff99cc;
     color: white;
     border: none;
+    padding: 10px 20px;
     cursor: pointer;
+    border-radius: 5px;
 }
-
-#product-list img {
-    max-width: 100px;
+button:hover {
+    background: #ff66b2;
+}
+.products img, .swatches img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
