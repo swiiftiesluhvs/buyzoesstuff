@@ -2,76 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffe6f2;
-            text-align: center;
-            padding: 50px;
-        }
-        .container {
-            max-width: 400px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #ff66b2;
-            border: none;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #ff3385;
-        }
-    </style>
+    <title>Signup & Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
+    <header>
+        <h1>Login / Signup</h1>
+        <button onclick="window.location.href='index.html'">Back to Shop</button>
+    </header>
 
-    <div class="container">
-        <h2>Sign Up</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="signUp()">Sign Up</button>
-        <p>Already have an account? <a href="login.html">Log in here</a></p>
-    </div>
-
-    <script>
-        function signUp() {
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-
-            if (username && password) {
-                let users = JSON.parse(localStorage.getItem("users")) || [];
-                if (users.find(user => user.username === username)) {
-                    alert("Username already exists! Try a different one.");
-                    return;
-                }
-
-                users.push({ username, password });
-                localStorage.setItem("users", JSON.stringify(users));
-
-                alert("Sign up successful! You can now log in.");
-                window.location.href = "login.html";
-            } else {
-                alert("Please fill in all fields.");
-            }
-        }
-    </script>
-
+    <main>
+        <h2>User Login</h2>
+        <input type="text" id="username" placeholder="First Name" required>
+        <input type="email" id="user-email" placeholder="Email" required>
+        <input type="password" id="user-password" placeholder="Password" required>
+        <button onclick="userLogin()">Login</button>
+        
+        <h2>Admin Login</h2>
+        <input type="email" id="admin-email" placeholder="Admin Email" required>
+        <input type="password" id="admin-password" placeholder="Admin Password" required>
+        <button onclick="adminLogin()">Admin Login</button>
+    </main>
 </body>
 </html>
