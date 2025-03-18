@@ -3,21 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop</title>
-    <link rel="stylesheet" href="style.css">
+    <title>buyzoesstuff</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Welcome to the Shop</h1>
-    <button onclick="openCart()">View Cart</button>
-    <button onclick="openLogin()">Admin Login</button>
-    
-    <div id="categories">
-        <button onclick="showCategory('electronics')">Electronics</button>
-        <button onclick="showCategory('fashion')">Fashion</button>
-    </div>
-    
-    <div id="product-list"></div>
-    
-    <script src="script.js"></script>
+    <header>
+        <div class="logo-container">
+            <img id="logo" src="uploads/logo.png" alt="buyzoesstuff logo">
+        </div>
+        <h1>buyzoesstuff</h1>
+        <nav>
+            <button onclick="window.location.href='signup.html'">Login / Signup</button>
+            <button onclick="window.location.href='cart.html'">Cart</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="categories">
+            <button onclick="filterCategory('haircare')">Haircare</button>
+            <button onclick="filterCategory('makeup')">Makeup</button>
+            <button onclick="filterCategory('skincare')">Skincare</button>
+            <button onclick="filterCategory('bodycare')">Bodycare</button>
+        </div>
+        
+        <div id="product-list" class="products"></div>
+    </main>
+
+    <footer>
+        <div class="swatches">
+            <h3>Swatches</h3>
+            <img src="uploads/swatches.jpg" alt="Product swatches" style="width: 100%;">
+        </div>
+        <p>&copy; 2025 buyzoesstuff</p>
+    </footer>
 </body>
 </html>
