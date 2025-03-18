@@ -2,29 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="admin-script.js" defer></script>
 </head>
 <body>
-    <h1>Manage Products</h1>
-    <button onclick="goToShop()">Back to Shop</button>
-    
-    <input type="text" id="product-name" placeholder="Product Name">
-    <input type="text" id="product-price" placeholder="Price">
-    <input type="text" id="product-description" placeholder="Description">
-    <input type="file" id="product-image">
-    <select id="product-category">
-        <option value="electronics">Electronics</option>
-        <option value="fashion">Fashion</option>
-    </select>
-    <select id="product-type">
-        <option value="reserve">Reserve</option>
-        <option value="bid">Bid</option>
-    </select>
-    <button onclick="addProduct()">Add Product</button>
-    
-    <div id="product-list"></div>
-    <script src="script.js"></script>
+    <header>
+        <h1>Admin Panel - buyzoesstuff</h1>
+        <button onclick="window.location.href='index.html'">Back to Shop</button>
+    </header>
+
+    <main>
+        <section>
+            <h2>Upload Logo</h2>
+            <input type="file" id="logo-upload" accept="image/*">
+            <button onclick="uploadLogo()">Upload Logo</button>
+        </section>
+
+        <section>
+            <h2>Add New Product</h2>
+            <input type="text" id="product-name" placeholder="Product Name">
+            <input type="file" id="product-image" accept="image/*">
+            <textarea id="product-description" placeholder="Product Description"></textarea>
+            <input type="number" id="retail-price" placeholder="Retail Price">
+            <input type="number" id="my-price" placeholder="Your Price">
+            <select id="product-type">
+                <option value="reserve">Reserve</option>
+                <option value="bid">Bid</option>
+            </select>
+            <select id="product-category">
+                <option value="haircare">Haircare</option>
+                <option value="makeup">Makeup</option>
+                <option value="skincare">Skincare</option>
+                <option value="bodycare">Bodycare</option>
+            </select>
+            <button onclick="addProduct()">Add Product</button>
+        </section>
+
+        <section>
+            <h2>Manage Products</h2>
+            <div id="admin-product-list"></div>
+        </section>
+
+        <section>
+            <h2>Reservations & Bids</h2>
+            <div id="reservations"></div>
+        </section>
+    </main>
 </body>
 </html>
