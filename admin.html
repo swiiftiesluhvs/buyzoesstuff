@@ -2,52 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="admin-script.js" defer></script>
+    <script defer src="admin.js"></script>
 </head>
 <body>
     <header>
-        <h1>Admin Panel - buyzoesstuff</h1>
-        <button onclick="window.location.href='index.html'">Back to Shop</button>
+        <h1>Admin Panel</h1>
+        <button onclick="location.href='index.html'">Back to Shop</button>
     </header>
-
-    <main>
-        <section>
-            <h2>Upload Logo</h2>
-            <input type="file" id="logo-upload" accept="image/*">
-            <button onclick="uploadLogo()">Upload Logo</button>
-        </section>
-
-        <section>
-            <h2>Add New Product</h2>
-            <input type="text" id="product-name" placeholder="Product Name">
-            <input type="file" id="product-image" accept="image/*">
-            <textarea id="product-description" placeholder="Product Description"></textarea>
-            <input type="number" id="retail-price" placeholder="Retail Price">
-            <input type="number" id="my-price" placeholder="Your Price">
-            <select id="product-type">
-                <option value="reserve">Reserve</option>
-                <option value="bid">Bid</option>
-            </select>
-            <select id="product-category">
-                <option value="haircare">Haircare</option>
-                <option value="makeup">Makeup</option>
-                <option value="skincare">Skincare</option>
-                <option value="bodycare">Bodycare</option>
-            </select>
-            <button onclick="addProduct()">Add Product</button>
-        </section>
-
-        <section>
-            <h2>Manage Products</h2>
-            <div id="admin-product-list"></div>
-        </section>
-
-        <section>
-            <h2>Reservations & Bids</h2>
-            <div id="reservations"></div>
-        </section>
-    </main>
+    
+    <div id="admin-login">
+        <h2>Admin Login</h2>
+        <input type="email" id="admin-email" placeholder="Email">
+        <input type="password" id="admin-password" placeholder="Password">
+        <button onclick="adminLogin()">Login</button>
+    </div>
+    
+    <div id="admin-dashboard" style="display:none;">
+        <h2>Manage Products</h2>
+        <button onclick="showAddProduct()">Add New Product</button>
+        <div id="product-management"></div>
+        
+        <h2>Reservations</h2>
+        <div id="reservation-list"></div>
+    </div>
 </body>
 </html>
