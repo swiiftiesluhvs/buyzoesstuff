@@ -5,37 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>buyzoesstuff</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img id="logo" src="uploads/logo.png" alt="buyzoesstuff logo">
-        </div>
         <h1>buyzoesstuff</h1>
-        <nav>
-            <button onclick="window.location.href='signup.html'">Login / Signup</button>
-            <button onclick="window.location.href='cart.html'">Cart</button>
-        </nav>
+        <p id="shop-description" contenteditable="true">Welcome to my shop! Browse and reserve your favorite products.</p>
+        <button onclick="location.href='admin.html'">Admin Panel</button>
+        <button onclick="location.href='cart.html'">Cart 🛒</button>
     </header>
-
+    
+    <aside class="sidebar">
+        <h2>Categories</h2>
+        <button onclick="showCategory('haircare')">Haircare</button>
+        <button onclick="showCategory('makeup')">Makeup</button>
+        <button onclick="showCategory('skincare')">Skincare</button>
+        <button onclick="showCategory('bodycare')">Bodycare</button>
+    </aside>
+    
     <main>
-        <div class="categories">
-            <button onclick="filterCategory('haircare')">Haircare</button>
-            <button onclick="filterCategory('makeup')">Makeup</button>
-            <button onclick="filterCategory('skincare')">Skincare</button>
-            <button onclick="filterCategory('bodycare')">Bodycare</button>
-        </div>
-        
         <div id="product-list" class="products"></div>
     </main>
-
+    
     <footer>
-        <div class="swatches">
-            <h3>Swatches</h3>
-            <img src="uploads/swatches.jpg" alt="Product swatches" style="width: 100%;">
-        </div>
-        <p>&copy; 2025 buyzoesstuff</p>
+        <h3>Swatches</h3>
+        <img id="swatch-image" src="swatches.jpg" alt="Swatches" style="max-width: 100%;">
     </footer>
 </body>
 </html>
